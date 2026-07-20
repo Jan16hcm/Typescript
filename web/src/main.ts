@@ -1,13 +1,63 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { countCounter, resetCounter } from './counter.ts';
-document.querySelector<HTMLButtonElement>("#btn-increase")?.addEventListener("click", () => {
-  countCounter(document.querySelector<HTMLDivElement>("#counter")!, 1);
-});
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap-icons/font/bootstrap-icons.css";
+import { validAccount } from "./login";
 
-document.querySelector<HTMLButtonElement>("#btn-decrease")?.addEventListener("click", () => {
-  countCounter(document.querySelector<HTMLDivElement>("#counter")!, -1);
-});
+const username = document.querySelector<HTMLInputElement>("#username");
+const password = document.querySelector<HTMLInputElement>("#password");
+const toggleBtn = document.querySelector<HTMLButtonElement>("#toggleBtn");
+const form = document.querySelector<HTMLFormElement>("#validForm");
 
-document.querySelector<HTMLButtonElement>("#btn-reset")?.addEventListener("click", () => {
-  resetCounter(document.querySelector<HTMLDivElement>("#counter")!);
-})
+if (form && password && toggleBtn) {
+  toggleBtn.addEventListener("click", () => {
+    const isPassword: boolean = password.type === "password";
+
+    password.type = isPassword ? "text" : "password";
+
+    const eye = toggleBtn.querySelector("i");
+    if (eye) {
+      eye.className = isPassword ? "bi bi-eye-slash" : "bi bi-eye-fill";
+    }
+  });
+}
+
+if (form && username && password) {
+  form.addEventListener("submit", (event: Event) => {
+    event.preventDefault();
+    const userValue = username.value.trim();
+    const passValue = password.value.trim();
+
+    const result = validAccount(userValue, passValue);
+
+    const userFeedBack = username.nextElementSibling as HTMLDivElement;
+    const passFeedBack = password.nextElementSibling as HTMLDivElement;
+
+    if (result.userError) {
+      username.classList.add("is-invalid");
+      userFeedBack.textContent = result.userError;
+    } else {
+      username.classList.remove("is-invalid");
+    }
+
+    if (result.passError) {
+      password.classList.add("is-invalid");
+      passFeedBack.textContent = result.passError;
+    } else {
+      password.classList.remove("is-invalid");
+    }
+
+    if (result.userError) {
+      username.focus();
+    } else if (result.passError) {
+      password.focus();
+    } else if (result.isSuccess) {
+      window.location.assign("../Counter.html");
+    }
+  });
+  username.addEventListener("input", () => {
+    username.classList.remove("is-invalid");
+  });
+
+  password.addEventListener("input", () => {
+    password.classList.remove("is-invalid");
+  });
+}

@@ -2,15 +2,56 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>web</title>
+    <title>Login</title>
   </head>
-  <body class="container text-center mt-3">
-    <div id="counter" class="display-2">0</div>
-    <button type="button" class="btn btn-primary me-2" id="btn-increase">Increase</button>
-    <button type="button" class="btn btn-danger me-2" id="btn-decrease">Decrease</button>
-    <button type="button" class="btn btn-secondary" id="btn-reset"> Reset</button>
+  <body class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6 bg-light mt-2 rounded shadow-sm">
+        <h1 class="text-center">Login</h1>
+
+        <form id="validForm" novalidate>
+          <div class="mb-3">
+            <label for="username" class="ms-1 mb-sm-1">Username</label>
+            <input
+              type="text"
+              class="form-control"
+              id="username"
+              placeholder="Enter your username"
+              required
+            />
+            <div class="invalid-feedback">Please enter your username</div>
+          </div>
+
+          <div class="mb-4">
+            <label for="password" class="ms-1 mb-sm-1">Password</label>
+            <div class="input-group">
+              <input
+                type="password"
+                class="form-control pe-5"
+                id="password"
+                placeholder="Enter your password"
+                required
+              />
+              <button
+                class="btn btn-outline-secondary bg-white"
+                type="button"
+                id="toggleBtn"
+                style="color: #6c757d"
+              >
+                <i class="bi bi-eye-fill"></i>
+              </button>
+              <div class="invalid-feedback">Please enter your password</div>
+            </div>
+          </div>
+
+          <div class="row justify-content-center mb-3">
+            <button type="submit" class="col-8 btn btn-primary">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
