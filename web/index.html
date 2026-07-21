@@ -7,7 +7,7 @@
   </head>
   <body class="container">
     <div class="row justify-content-center">
-      <div class="col-md-6 bg-light mt-2 rounded shadow-sm">
+      <div class="col-md-8 bg-light mt-2 rounded shadow-sm">
         <h1 class="text-center">Login</h1>
 
         <form id="validForm" novalidate>
@@ -20,10 +20,9 @@
               placeholder="Enter your username"
               required
             />
-            <div class="invalid-feedback">Please enter your username</div>
           </div>
 
-          <div class="mb-4">
+          <div class="mb-3">
             <label for="password" class="ms-1 mb-sm-1">Password</label>
             <div class="input-group">
               <input
@@ -41,10 +40,12 @@
               >
                 <i class="bi bi-eye-fill"></i>
               </button>
-              <div class="invalid-feedback">Please enter your password</div>
             </div>
           </div>
 
+          <div class="mb-2" id="errorMessage">
+            Hehe
+          </div>
           <div class="row justify-content-center mb-3">
             <button type="submit" class="col-8 btn btn-primary">Submit</button>
           </div>

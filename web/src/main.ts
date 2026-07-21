@@ -1,6 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import { validAccount } from "./login";
+import { countCounter } from "./counter";
 
 const username = document.querySelector<HTMLInputElement>("#username");
 const password = document.querySelector<HTMLInputElement>("#password");
@@ -28,8 +29,7 @@ if (form && username && password) {
 
     const result = validAccount(userValue, passValue);
 
-    const userFeedBack = username.nextElementSibling as HTMLDivElement;
-    const passFeedBack = password.nextElementSibling as HTMLDivElement;
+    const errorMessage = document.querySelector<HTMLDivElement>("#errorMessage");
 
     if (result.userError) {
       username.classList.add("is-invalid");
@@ -60,4 +60,17 @@ if (form && username && password) {
   password.addEventListener("input", () => {
     password.classList.remove("is-invalid");
   });
+}
+
+
+//Counter
+const counter = document.querySelector<HTMLDivElement>("#counter");
+const increaseBtn = document.querySelector<HTMLButtonElement>("#increaseBtn");
+const decreaseBtn = document.querySelector<HTMLButtonElement>("#decreaseBtn");
+const resetBtn = document.querySelector<HTMLButtonElement>("#resetBtn");
+if(counter && increaseBtn && decreaseBtn && resetBtn) {
+  increaseBtn.addEventListener("click", () => countCounter(counter, 1));
+  decreaseBtn.addEventListener("click", () => countCounter(counter, -1));
+  resetBtn.addEventListener("click", () => countCounter(counter, 0));
+
 }
