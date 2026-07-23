@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator</title>
+  </head>
+
+  <body class="d-flex">
+    <div class="flex-column card shadow mx-auto mt-3" style="max-width: 500px; height: 600px; background-color: gray;">
+        <div class="text-end mx-1 my-1 p-3 fs-4 fw-bold bg-dark text-white overflow-hidden border rounded border-secondary" id="answer">0</div>
+
+        <div class="row row-cols-4 g-2 p-2 flex-grow-1">
+            <div class="col"><button class="btn btn-warning w-100 h-100" id="clearBtn">AC</button></div>
+            <div class="col"><button class="btn btn-secondary w-100 h-100 operation" id="powerBtn">^</button></div>
+            <div class="col"><button class="btn btn-secondary w-100 h-100 operation" id="remainerBtn">%</button></div>
+            <div class="col"><button class="btn btn-secondary w-100 h-100 operation" id="dividedBtn">÷</button></div>
+
+            <div class="col"><button class="btn btn-light w-100 h-100 number">7</button></div>
+            <div class="col"><button class="btn btn-light w-100 h-100 number">8</button></div>
+            <div class="col"><button class="btn btn-light w-100 h-100 number">9</button></div>
+            <div class="col"><button class="btn btn-secondary w-100 h-100 operation" id="multiplyBtn">x</button></div>
+
+            <div class="col"><button class="btn btn-light w-100 h-100 number">4</button></div>
+            <div class="col"><button class="btn btn-light w-100 h-100 number">5</button></div>
+            <div class="col"><button class="btn btn-light w-100 h-100 number">6</button></div>
+            <div class="col"><button class="btn btn-secondary w-100 h-100 operation" id="negativeBtn">-</button></div>
+
+            <div class="col"><button class="btn btn-light w-100 h-100 number">1</button></div>
+            <div class="col"><button class="btn btn-light w-100 h-100 number">2</button></div>
+            <div class="col"><button class="btn btn-light w-100 h-100 number">3</button></div>
+            <div class="col"><button class="btn btn-secondary w-100 h-100 operation" id="positiveBtn">+</button></div>
+
+            <div class="col"><button class="btn btn-secondary w-100 h-100 number">0</button></div>
+            <div class="col"><button class="btn btn-secondary w-100 h-100">.</button></div>
+            <div class="col"><button class="btn btn-secondary w-100 h-100">ANS</button></div>
+            <div class="col"><button class="btn btn-secondary w-100 h-100" id="calcBtn">=</button></div>
+        </div>
+    </div>
+    <script type="module" src="src/calculator.ts"></script>
+  </body>
+</html>
