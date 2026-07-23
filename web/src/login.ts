@@ -1,26 +1,28 @@
 interface validationResult {
   errorMessage: string,
-  isSuccess: boolean
+  isSuccess: boolean,
+  accountNotFound?: boolean,
+  userError?: boolean,
+  passError?: boolean
 }
 
 export function validAccount(user: string, pass: string):validationResult {
   const invalidWord = /[!@#$%^&*(),.?';"{}<>|~`]/;
-
   if(user === "" && pass === "") {
-    return {errorMessage: "Username or password is incorrect. Please try again!", isSuccess: false};
+    return {errorMessage: "The login information you entered is incorrect.", isSuccess: false, userError: true, passError: true};
   }
 
-  if(user === "" || user.length < 3 || invalidWord.test(user)) {
-    return {errorMessage: "Please enter a username with only letters, numbers, or underscores (3-20 characters).", isSuccess: false};
+  else if(user === "" || user.length < 3 || invalidWord.test(user)) {
+    return {errorMessage: "Please enter a username with only letters, numbers, or underscores (3-20 characters).", isSuccess: false, userError: true, passError: false};
   }
 
-  if(pass === "" || pass.length < 6) {
-    return {errorMessage: "Password must be at least 6 characters.", isSuccess: false};
+  else if(pass === "" || pass.length < 6) {
+    return {errorMessage: "Password must be at least 6 characters.", isSuccess: false, userError: false, passError: true};
   }
 
-  if(user === "binsuong" && pass === "123456") {
+  else if(user === "binsuong" && pass === "123456") {
     return {errorMessage: "", isSuccess: true};
   }
 
-  return {errorMessage: "", isSuccess: false};
+  return {errorMessage: "", isSuccess: true, accountNotFound: true};
 }
