@@ -11,8 +11,9 @@ const dividedBtn = document.querySelector<HTMLButtonElement>("#dividedBtn");
 const multiplyBtn = document.querySelector<HTMLButtonElement>("#multiplyBtn");
 const negativeBtn = document.querySelector<HTMLButtonElement>("#negativeBtn");
 const positiveBtn = document.querySelector<HTMLButtonElement>("#positiveBtn");
+const operations = document.querySelectorAll<HTMLButtonElement>(".operation");
 const buttons = document.querySelectorAll<HTMLButtonElement>("button");
-
+ 
 function checkLengthLimit(): void {
     if(answer && answer.textContent && answer.textContent.length >= 15) {
         buttons.forEach((btn) => {
@@ -25,14 +26,23 @@ function checkLengthLimit(): void {
     }
 }
 
-if (clearBtn && numbers && answer && calcBtn && powerBtn && remainerBtn && dividedBtn && multiplyBtn && negativeBtn && positiveBtn && buttons) {
-    setInterval(() => {
-        const text = answer.textContent.trim();
+const observer = new MutationObserver(() => {
+    if(answer && answer.textContent) {
+        const text: string = answer.textContent.trim();
         if(text.length >= 15) {
             answer.textContent = text.slice(0, 15);
+
+            checkLengthLimit();
         }
-        checkLengthLimit();
-    }, 100)
+    }
+});
+
+if (clearBtn && numbers && answer && calcBtn && powerBtn && remainerBtn && dividedBtn && multiplyBtn && negativeBtn && positiveBtn && buttons) {
+    observer.observe(answer, {
+        childList: true,
+        characterData: true,
+        subtree: true
+    });
 
     clearBtn.addEventListener("click", () => {
         answer.textContent = "0";
