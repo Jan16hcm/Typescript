@@ -1,5 +1,6 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
+const LIMIT_LENGTH = 32;
 
 const clearBtn = document.querySelector<HTMLButtonElement>("#clearBtn");
 const numbers = document.querySelectorAll<HTMLButtonElement>(".number");
@@ -13,19 +14,10 @@ const negativeBtn = document.querySelector<HTMLButtonElement>("#negativeBtn");
 const positiveBtn = document.querySelector<HTMLButtonElement>("#positiveBtn");
 const operations = document.querySelectorAll<HTMLButtonElement>(".operation");
 const buttons = document.querySelectorAll<HTMLButtonElement>("button");
-const observer = new MutationObserver(() => {
-  if (answer && answer.textContent) {
-    const text: string = getAnswerText();
-    if (text.length >= 15) {
-      answer.textContent = text.slice(0, 15);
-
-      checkLengthLimit();
-    }
-  }
-});
 
 function checkLengthLimit(): void {
-  if (answer && answer.textContent && answer.textContent.length >= 15) {
+  if (getAnswerLength() >= LIMIT_LENGTH) {
+    console.warn(`[Limit Reached] Màn hình đã đạt tối đa ${getAnswerLength()}/${LIMIT_LENGTH} ký tự!`);
     buttons.forEach((btn) => {
       btn.disabled = true;
     });
@@ -45,15 +37,18 @@ function getAnswerLength(): number {
 }
 
 function setAnswerContent(input: string): void {
+  if(getAnswerLength() >= 15) return;
   if (answer) {
     answer.textContent = getAnswerText().slice(0, -1) + input;
   }
 }
 
 function addAnswerContent(input: string): void {
+  if(getAnswerLength() >= 15) return;
   if (answer) {
-    answer.textContent += input;
+    answer.textContent += " " + input;
   }
+  checkLengthLimit();
 }
 
 function isDigit(input: string): boolean {
@@ -74,11 +69,6 @@ if (
   operations &&
   buttons
 ) {
-  observer.observe(answer, {
-    childList: true,
-    characterData: true,
-    subtree: true,
-  });
 
   clearBtn.addEventListener("click", () => {
     answer.textContent = "0";
@@ -91,11 +81,22 @@ if (
 
   numbers.forEach((number) => {
     number.addEventListener("click", () => {
-      answer.textContent =
-        answer.textContent.trim() === "0"
-          ? number.textContent
-          : (answer.textContent += number.textContent);
-
+      const previousCharacter: string = getAnswerText()[getAnswerLength() - 1];
+      if (getAnswerText() === "0") {
+        setAnswerContent(number.textContent);
+      } else {
+        if (isDigit(previousCharacter)) {
+          answer.textContent += number.textContent;
+        } else {
+          addAnswerContent(number.textContent);
+        }
+      }
+      console.log(
+        "Previous character: " +
+          previousCharacter +
+          "\nCurrent answer: " +
+          getAnswerText(),
+      );
       checkLengthLimit();
     });
   });
