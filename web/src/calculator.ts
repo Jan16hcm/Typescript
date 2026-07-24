@@ -18,7 +18,7 @@ function checkLengthLimit(): void {
         buttons.forEach((btn) => {
             btn.disabled = true;
         })
-
+        
         if(clearBtn) {
             clearBtn.disabled = false;
         }
@@ -26,8 +26,14 @@ function checkLengthLimit(): void {
 }
 
 if (clearBtn && numbers && answer && calcBtn && powerBtn && remainerBtn && dividedBtn && multiplyBtn && negativeBtn && positiveBtn && buttons) {
+    setInterval(() => {
+        const text = answer.textContent.trim();
+        if(text.length >= 15) {
+            answer.textContent = text.slice(0, 15);
+        }
+        checkLengthLimit();
+    }, 100)
 
-    
     clearBtn.addEventListener("click", () => {
         answer.textContent = "0";
         
