@@ -9,6 +9,9 @@ let answer = document.querySelector<HTMLDivElement>("#answer");
 let lastAnsValue: string = "0";
 let subAnswer = document.querySelector<HTMLDivElement>("#subAnswer");
 let ansBtn = document.querySelector<HTMLButtonElement>("#ansBtn");
+let countBracket: number = 0;
+const closeBracketBtn =
+  document.querySelector<HTMLButtonElement>("#closeBracketBtn");
 const calcBtn = document.querySelector<HTMLButtonElement>("#calcBtn");
 const powerBtn = document.querySelector<HTMLButtonElement>("#powerBtn");
 const remainerBtn = document.querySelector<HTMLButtonElement>("#remainerBtn");
@@ -24,14 +27,16 @@ export function getAns(): string {
 }
 
 function setAns(value: string): void {
-  if(!isNaN(Number(value))) {
+  if (!isNaN(Number(value))) {
     lastAnsValue = value;
   }
 }
 
 function checkLengthLimit(): void {
   if (getAnswerLength() >= LIMIT_LENGTH) {
-    console.warn(`[Limit Reached] Màn hình đã đạt tối đa ${getAnswerLength()}/${LIMIT_LENGTH} ký tự!`);
+    console.warn(
+      `[Limit Reached] Màn hình đã đạt tối đa ${getAnswerLength()}/${LIMIT_LENGTH} ký tự!`,
+    );
     buttons.forEach((btn) => {
       btn.disabled = true;
     });
@@ -51,14 +56,14 @@ function getAnswerLength(): number {
 }
 
 function setAnswerContent(input: string): void {
-  if(getAnswerLength() >= 15) return;
+  if (getAnswerLength() >= 15) return;
   if (answer) {
     answer.textContent = getAnswerText().slice(0, -1) + input;
   }
 }
 
 function addAnswerContent(input: string): void {
-  if(getAnswerLength() >= 15) return;
+  if (getAnswerLength() >= 15) return;
   if (answer) {
     answer.textContent += " " + input;
   }
@@ -85,7 +90,6 @@ if (
   operations &&
   buttons
 ) {
-
   clearBtn.addEventListener("click", () => {
     answer.textContent = "0";
 
@@ -103,7 +107,7 @@ if (
       } else {
         if (isDigit(previousCharacter)) {
           answer.textContent += number.textContent;
-        } else if(previousCharacter === "-" && getAnswerLength() === 1) {
+        } else if (previousCharacter === "-" && getAnswerLength() === 1) {
           answer.textContent += number.textContent;
         } else {
           addAnswerContent(number.textContent);
@@ -135,7 +139,7 @@ if (
            * - Prevent duplicate
            */
           if (
-            ["*", "/", "%", ".", ")"].includes(previousCharacter) ||
+            ["*", "/", "%", ".", ")", "%"].includes(previousCharacter) ||
             isDigit(previousCharacter)
           ) {
             if (previousCharacter === "0" && getAnswerLength() === 1) {
@@ -165,7 +169,7 @@ if (
            * - If previous is %, ., digit will add to answer
            */
           if (
-            ["%", ".", ")"].includes(previousCharacter) ||
+            ["%", ".", ")", "%"].includes(previousCharacter) ||
             isDigit(previousCharacter)
           ) {
             addAnswerContent(operation.textContent);
@@ -196,7 +200,7 @@ if (
            * If previous is ^ will ignore
            */
           if (
-            ["%", ".", ")"].includes(previousCharacter) ||
+            ["%", ".", ")", "%"].includes(previousCharacter) ||
             isDigit(previousCharacter)
           ) {
             addAnswerContent(operation.textContent);
@@ -228,7 +232,7 @@ if (
            * If previous is ^ will ignore
            */
           if (
-            ["%", ".", ")"].includes(previousCharacter) ||
+            ["%", ".", ")", "%"].includes(previousCharacter) ||
             isDigit(previousCharacter)
           ) {
             addAnswerContent(operation.textContent);
@@ -251,24 +255,62 @@ if (
               getAnswerText(),
           );
           break;
-        
-          case "ansBtn":
-            if(!isNaN(Number(previousCharacter))) {
-            } else {
-              addAnswerContent("Ans");
-            }
-            console.log(
+
+        case "remainerBtn":
+          if (!isNaN(Number(previousCharacter))) {
+            answer.textContent += "%";
+          } else {
+          }
+          console.log(
             "Previous character: " +
               previousCharacter +
               "\nCurrent answer: " +
               getAnswerText(),
           );
           break;
-            
+
+        case "powerBtn":
+          if (!isNaN(Number(previousCharacter))) {
+            answer.textContent += "^ (";
+            countBracket++;
+          } else {
+          }
+          console.log(
+            "Previous character: " +
+              previousCharacter +
+              "\nCurrent answer: " +
+              getAnswerText(),
+          );
+          break;
+
+        case "ansBtn":
+          if (!isNaN(Number(previousCharacter))) {
+          } else {
+            addAnswerContent("Ans");
+          }
+          console.log(
+            "Previous character: " +
+              previousCharacter +
+              "\nCurrent answer: " +
+              getAnswerText(),
+          );
+          break;
+
+        case "closeBracketBtn":
+          if (countBracket % 2 != 0 && countBracket != 0) {
+            addAnswerContent(")");
+          }
+          console.log(
+            "Previous character: " +
+              previousCharacter +
+              "\nCurrent answer: " +
+              getAnswerText(),
+          );
+          break;
         case "calcBtn":
           const input: string = answer.textContent || "";
-          
-          if(!input.trim()) break;
+
+          if (!input.trim()) break;
           console.log("Last ans: " + getAns());
           const result = calculate(input);
 
