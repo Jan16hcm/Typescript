@@ -1,10 +1,12 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
+import { calculate } from "./inFixtoPostfix";
 const LIMIT_LENGTH = 32;
 
 const clearBtn = document.querySelector<HTMLButtonElement>("#clearBtn");
 const numbers = document.querySelectorAll<HTMLButtonElement>(".number");
 let answer = document.querySelector<HTMLDivElement>("#answer");
+let subAnswer = document.querySelector<HTMLDivElement>("#subAnswer");
 const calcBtn = document.querySelector<HTMLButtonElement>("#calcBtn");
 const powerBtn = document.querySelector<HTMLButtonElement>("#powerBtn");
 const remainerBtn = document.querySelector<HTMLButtonElement>("#remainerBtn");
@@ -51,7 +53,7 @@ function addAnswerContent(input: string): void {
   checkLengthLimit();
 }
 
-function isDigit(input: string): boolean {
+export function isDigit(input: string): boolean {
   return /^[0-9]$/.test(input);
 }
 
@@ -59,6 +61,7 @@ if (
   clearBtn &&
   numbers &&
   answer &&
+  subAnswer &&
   calcBtn &&
   powerBtn &&
   remainerBtn &&
@@ -86,6 +89,8 @@ if (
         setAnswerContent(number.textContent);
       } else {
         if (isDigit(previousCharacter)) {
+          answer.textContent += number.textContent;
+        } else if(previousCharacter === "-" && getAnswerLength() === 1) {
           answer.textContent += number.textContent;
         } else {
           addAnswerContent(number.textContent);
@@ -117,7 +122,7 @@ if (
            * - Prevent duplicate
            */
           if (
-            ["x", "÷", "%", ".", ")"].includes(previousCharacter) ||
+            ["*", "/", "%", ".", ")"].includes(previousCharacter) ||
             isDigit(previousCharacter)
           ) {
             if (previousCharacter === "0" && getAnswerLength() === 1) {
@@ -151,7 +156,7 @@ if (
             isDigit(previousCharacter)
           ) {
             addAnswerContent(operation.textContent);
-          } else if (["x", "÷", "-"].includes(previousCharacter)) {
+          } else if (["*", "/", "-"].includes(previousCharacter)) {
             if (previousCharacter === "-" && getAnswerLength() === 1) {
               console.log("Ignore '+' when text is just '-'");
             } else {
@@ -182,9 +187,9 @@ if (
             isDigit(previousCharacter)
           ) {
             addAnswerContent(operation.textContent);
-          } else if (["+", "÷", "-"].includes(previousCharacter)) {
+          } else if (["+", "/", "-"].includes(previousCharacter)) {
             if (previousCharacter === "-" && getAnswerLength() === 1) {
-              console.log("Ignore 'x' when text is just '-'");
+              console.log("Ignore '*' when text is just '-'");
             } else {
               setAnswerContent(operation.textContent);
             }
@@ -214,9 +219,9 @@ if (
             isDigit(previousCharacter)
           ) {
             addAnswerContent(operation.textContent);
-          } else if (["+", "x", "-"].includes(previousCharacter)) {
+          } else if (["+", "*", "-"].includes(previousCharacter)) {
             if (previousCharacter === "-" && getAnswerLength() === 1) {
-              console.log("Ignore '÷' when text is just '-'");
+              console.log("Ignore '/' when text is just '-'");
             } else {
               setAnswerContent(operation.textContent);
             }
@@ -235,6 +240,10 @@ if (
           break;
 
         case "calcBtn":
+          const input: string = answer.textContent;
+          answer.textContent = calculate(input);
+          subAnswer.textContent = input;
+          break;
       }
     });
   });
