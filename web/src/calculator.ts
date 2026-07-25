@@ -6,7 +6,9 @@ const LIMIT_LENGTH = 32;
 const clearBtn = document.querySelector<HTMLButtonElement>("#clearBtn");
 const numbers = document.querySelectorAll<HTMLButtonElement>(".number");
 let answer = document.querySelector<HTMLDivElement>("#answer");
+let lastAnsValue: string = "0";
 let subAnswer = document.querySelector<HTMLDivElement>("#subAnswer");
+let ansBtn = document.querySelector<HTMLButtonElement>("#ansBtn");
 const calcBtn = document.querySelector<HTMLButtonElement>("#calcBtn");
 const powerBtn = document.querySelector<HTMLButtonElement>("#powerBtn");
 const remainerBtn = document.querySelector<HTMLButtonElement>("#remainerBtn");
@@ -16,6 +18,16 @@ const negativeBtn = document.querySelector<HTMLButtonElement>("#negativeBtn");
 const positiveBtn = document.querySelector<HTMLButtonElement>("#positiveBtn");
 const operations = document.querySelectorAll<HTMLButtonElement>(".operation");
 const buttons = document.querySelectorAll<HTMLButtonElement>("button");
+
+export function getAns(): string {
+  return lastAnsValue;
+}
+
+function setAns(value: string): void {
+  if(!isNaN(Number(value))) {
+    lastAnsValue = value;
+  }
+}
 
 function checkLengthLimit(): void {
   if (getAnswerLength() >= LIMIT_LENGTH) {
@@ -62,6 +74,7 @@ if (
   numbers &&
   answer &&
   subAnswer &&
+  ansBtn &&
   calcBtn &&
   powerBtn &&
   remainerBtn &&
@@ -238,11 +251,31 @@ if (
               getAnswerText(),
           );
           break;
-
+        
+          case "ansBtn":
+            if(!isNaN(Number(previousCharacter))) {
+            } else {
+              addAnswerContent("Ans");
+            }
+            console.log(
+            "Previous character: " +
+              previousCharacter +
+              "\nCurrent answer: " +
+              getAnswerText(),
+          );
+          break;
+            
         case "calcBtn":
-          const input: string = answer.textContent;
-          answer.textContent = calculate(input);
-          subAnswer.textContent = input;
+          const input: string = answer.textContent || "";
+          
+          if(!input.trim()) break;
+          console.log("Last ans: " + getAns());
+          const result = calculate(input);
+
+          subAnswer.textContent = `${input} =`;
+          answer.textContent = result;
+
+          setAns(result);
           break;
       }
     });

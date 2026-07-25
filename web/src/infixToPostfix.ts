@@ -1,4 +1,5 @@
 import { Stack } from "./stack"
+import { getAns } from "./calculator";
 function isDigit(input: string): boolean {
   return /^[0-9]$/.test(input);
 }
@@ -81,7 +82,10 @@ function infixToPostfix(input: string): string {
 
 
 export function calculate(input: string): string {
-    const postFix = infixToPostfix(input);
+    let text = input.replace(/ans/gi, getAns());
+    console.log("text: " + text);
+    const postFix = infixToPostfix(text);
+
     let tokens: string[] = postFix.split(" ");
     let result: number = 0;
     const stack = new Stack<string>();
