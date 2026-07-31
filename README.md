@@ -12,4 +12,5 @@ Calculator App – Perform arithmetic operations with type-checked inputs.
 
 Random Password Generator – Generate secure passwords with configurable parameters.
 
+Tic-Tac-Toe
 Final is ToDo App
