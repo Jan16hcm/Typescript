@@ -1,6 +1,6 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
-import { calculate } from "./inFixtoPostfix";
+import { calculate } from "./infixToPostfix";
 const LIMIT_LENGTH = 32;
 
 const clearBtn = document.querySelector<HTMLButtonElement>("#clearBtn");
