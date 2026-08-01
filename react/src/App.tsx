@@ -4,11 +4,27 @@ import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
 import './App.css'
 
-function App() {
+function Header() {
+  return (
+    <>
+      <h1>Danh sách công việc của tôi</h1>
+
+      <ul>
+        <li style={{textAlign: "start"}}>Học bài React</li>
+        <li style={{textAlign: "start"}}>Hoàn thành bài tập lập trình</li>
+        <li style={{textAlign: "start"}}>Dọn dẹp bàn làm việc</li>
+      </ul>
+      <p>Chúc bạn hoàn thành công việc tốt nhất hôm nay</p>
+    </>
+  )
+}
+
+function App() { 
   const [count, setCount] = useState(0)
 
   return (
     <>
+      <Header />
       <section id="center">
         <div className="hero">
           <img src={heroImg} className="base" width="170" height="179" alt="" />
