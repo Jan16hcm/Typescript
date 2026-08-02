@@ -1,5 +1,5 @@
 import "./App.css";
-import reactLogo from "../src/assets/react.svg";
+import reactLogo from "./assets/react.svg";
 const welcome: string[] = ["Khải", "Khang", "Bin", "Ben"];
 
 function randomName(): string {
@@ -17,6 +17,9 @@ const person: Person = {
   name: "Khai",
   age: 38
 };
+
+const {name, age} = person;
+
 function Header() {
   const today = new Date().toLocaleDateString();
   const time = new Date().toLocaleTimeString();
@@ -31,10 +34,12 @@ function Header() {
       <h2>Chào {randomName()}</h2>
 
       <p>
-        {isLogin ? `Chào ${person.name}, Tuổi ${person.age}` : "Hãy đăng nhập"}
+        {isLogin ? `Chào ${name}, Tuổi ${age}` : "Hãy đăng nhập"}
       </p>
+      <div>
+        <img src={reactLogo} alt="ReactLogo" />
 
-      <img src={reactLogo} alt="ReactLogo" />
+      </div>
     </>
   );
 }
