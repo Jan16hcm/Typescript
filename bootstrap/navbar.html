@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>navbar</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg bg-primary-subtle">
+      <div class="container-fluid">
+        <a href="https://github.com/Jan16hcm" class="navbar-brand">
+          <img
+            src="./assets/images/logo.svg"
+            alt="githubLogo"
+            width="40"
+            height="30"
+            class="d-inline-block align-text-top"
+          />
+          Jan16hcm
+        </a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNavDropDown"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNavDropDown">
+          <ul class="navbar-nav">
+            <li class="nav-item"><a href="#" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">Feature</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">Price</a></li>
+
+            <li class="nav-item dropdown">
+              <a
+                href="#"
+                role="button"
+                class="nav-link dropdown-toggle"
+                data-bs-toggle="dropdown"
+                >Dropdown link</a
+              >
+              <ul class="dropdown-menu bg-primary-subtle border-0">
+                <li>
+                  <a href="#" class="dropdown-item">Action</a>
+                </li>
+                <li>
+                  <a href="#" class="dropdown-item">Another action</a>
+                </li>
+                <li>
+                  <a href="#" class="dropdown-item">Something else</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  </body>
+</html>
