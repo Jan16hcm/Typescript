@@ -2,3 +2,8 @@
   width: 50px;
   height: auto;
 }
+
+.list-group-item:first-child {
+  background-color: var(--bs-secondary-subtle);
+  font-weight: bold;
+}
