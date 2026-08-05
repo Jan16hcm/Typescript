@@ -12,22 +12,20 @@
     />
   </head>
   <body class="bg-light pt-2">
-    <nav
-      class="navbar navbar-expand-lg bg-body-tertiary border-bottom border-dark-subtle small "
-    >
-      <div class="container-xl">
+    <nav class="navbar navbar-expand-lg bg-light border-bottom">
+      <div class="container">
         <a href="#" class="navbar-brand">
           <img
             src="./assets/images/logo.svg"
             alt="githubLogo"
-            width="40"
-            height="30"
-            class="d-inline-block align-text-top"
+            width="25"
+            height="25"
+            class="d-inline-block"
           />
-          Jan16hcm
-        </a>
+          Jan16hcm</a
+        >
         <button
-          class="navbar-toggler ms-auto me-3 me-lg-0"
+          class="navbar-toggler border-0"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarCollapse"
@@ -36,74 +34,127 @@
         </button>
 
         <div class="navbar-collapse collapse" id="navbarCollapse">
-          <ul class="navbar-nav ps-2 ps-lg-0 mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a href="#" class="nav-link">Home</a>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">About</a>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">Course</a>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">FAQ</a>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">Blog</a>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">Contact</a>
-            </li>
+          <ul class="navbar-nav ms-2 ms-lg-0">
+            <li class="nav-item"><a href="#" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">About</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">Course</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">FAQ</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">Blog</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">Contact</a></li>
           </ul>
 
-          <div class="ms-auto me-1 mb-3 mb-lg-0">
-            <button type="button" class="btn btn-sm btn-danger d-inline-flex">
-              <img
-                src="./assets/images/personfill.svg"
-                alt="personfill"
-                width="20"
-                height="20"
-                class="d-inline-block align-text-bottom me-1"
-              />
-              <span>Sign-up for Free</span>
-            </button>
-
-            <button type="button" class="btn btn-sm btn-warning d-inline-flex">
-              <img
-                src="./assets/images/login.svg"
-                alt="login"
-                width="20"
-                height="20"
-                class="d-inline-block align-text-bottom"
-              />
-              <span>Login</span>
-            </button>
-          </div>
-
-          <form action="">
-            <div class="input-group">
-                <input
-                  type="search"
-                  name="searchBar"
-                  id="searchBar"
-                  class="form-control me-1 me-lg-0"
-                  placeholder="Search for..."
+          <div class="d-flex flex-row ms-auto gap-1">
+            <a
+              href="#"
+              class="btn btn-sm btn-danger align-items-center d-inline-flex text-center justify-content-center"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-person-plus-fill me-2"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"
                 />
-                <button type="submit" class="btn btn-success">
-                  <img
-                    src="./assets/images/search.svg"
-                    alt="search"
-                    width="20"
-                    height="20"
-                    class="d-inline-block align-text-bottom"
-                  />
-                </button>
-            </div>
-          </form>
+                <path
+                  fill-rule="evenodd"
+                  d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"
+                />
+              </svg>
+              Sign-up for Free
+            </a>
+
+            <a
+              href="#"
+              class="btn btn-sm btn-warning align-items-center d-inline-flex text-center justify-content-center"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 640 640"
+              >
+                <path
+                  d="M409 337C418.4 327.6 418.4 312.4 409 303.1L265 159C258.1 152.1 247.8 150.1 238.8 153.8C229.8 157.5 224 166.3 224 176L224 256L112 256C85.5 256 64 277.5 64 304L64 336C64 362.5 85.5 384 112 384L224 384L224 464C224 473.7 229.8 482.5 238.8 486.2C247.8 489.9 258.1 487.9 265 481L409 337zM416 480C398.3 480 384 494.3 384 512C384 529.7 398.3 544 416 544L480 544C533 544 576 501 576 448L576 192C576 139 533 96 480 96L416 96C398.3 96 384 110.3 384 128C384 145.7 398.3 160 416 160L480 160C497.7 160 512 174.3 512 192L512 448C512 465.7 497.7 480 480 480L416 480z"
+                />
+              </svg>
+              Login
+            </a>
+
+            <form action="" class="d-flex w-50">
+              <input
+                type="search"
+                class="form-control me-1"
+                placeholder="Search for.."
+              />
+              <button type="submit" class="btn btn-success">
+                <img
+                  src="./assets/images/search.svg"
+                  class="d-inline-block"
+                  alt="searchLogo"
+                />
+              </button>
+            </form>
+          </div>
         </div>
       </div>
     </nav>
+
+    <header class="main-header border-bottom py-5">
+      <div class="container">
+        <div class="row align-items-center gx-md-5">
+          <div class="col-12 col-md-6">
+            <div class="home-header">
+              <h5 class="fs-3 fw-normal">
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Optio
+                cupiditate, autem a labore quo voluptates.
+              </h5>
+              <p class="fs-5 fw-light fw-lighter">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Pariatur, ea, quia minus provident sequi quas fuga nihil dolores
+                quis ipsa nisi iusto, error necessitatibus! A earum fugit vel
+                mollitia id dolorum commodi, cumque non assumenda nostrum quidem
+                dolorem error quisquam?
+              </p>
+
+              <a
+                href="#"
+                class="btn btn-sm btn-success align-items-center d-inline-flex text-center justify-content-center"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-person-plus-fill me-2"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"
+                  />
+                  <path
+                    fill-rule="evenodd"
+                    d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"
+                  />
+                </svg>
+                Sign-up to get started
+              </a>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6 mt-3 m-md-0">
+            <img
+              src="./assets/images/main-header.jpg"
+              alt=""
+              class="img-fluid rounded"
+            />
+          </div>
+        </div>
+      </div>
+    </header>
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
