@@ -7,3 +7,9 @@
   background-color: var(--bs-secondary-subtle);
   font-weight: bold;
 }
+
+.subscribe {
+  background-image: url(./images/subscribe.jpg);
+  background-size: cover;
+  background-position: center;
+}

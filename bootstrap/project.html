@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="./assets/style.css" />
   </head>
   <body class="bg-light pt-2">
-    <nav class="navbar navbar-expand-lg bg-light border-bottom">
+    <nav class="navbar navbar-expand-lg bg-light border-bottom fixed-top">
       <div class="container">
         <a href="#" class="navbar-brand">
           <img
@@ -35,7 +35,7 @@
         </button>
 
         <div class="navbar-collapse collapse" id="navbarCollapse">
-          <ul class="navbar-nav ms-2 ms-lg-0">
+          <ul class="navbar-nav ms-2 ms-lg-0 pt-2 pt-lg-0">
             <li class="nav-item"><a href="#" class="nav-link">Home</a></li>
             <li class="nav-item"><a href="#" class="nav-link">About</a></li>
             <li class="nav-item"><a href="#" class="nav-link">Course</a></li>
@@ -104,7 +104,7 @@
       </div>
     </nav>
 
-    <header class="main-header border-bottom py-5">
+    <header class="main-header border-bottom py-5 mt-3">
       <div class="container">
         <div class="row align-items-center gx-md-5">
           <div class="col-12 col-md-6">
@@ -584,12 +584,13 @@
                 culpa non inventore neque tenetur aliquam dolore, quis, ex modi
                 repellat magnam et eius!
               </p>
-              <button type="button" class="btn btn-success">
+              <a class="btn btn-success d-inline-flex align-items-center">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="25"
                   height="25"
                   fill="#fff"
+                  class="me-2"
                   viewBox="0 0 640 640"
                 >
                   <path
@@ -597,12 +598,54 @@
                   />
                 </svg>
                 Sign-up to get more info
-              </button>
+              </a>
             </div>
           </div>
 
           <div class="col-12 col-md-6">
-            <img src="./assets/images/main-header.jpg" class="img-fluid rounded" alt="">
+            <img
+              src="./assets/images/main-header.jpg"
+              class="img-fluid rounded"
+              alt=""
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="subscribe py-5">
+      <div class="container">
+        <div class="row justify-content-center align-items-center">
+          <div class="col-12 col-md-4 text-light text-center mb-3 mb-md-0">
+            <h5 class="fw-light fs-4 text-center">Subscribe for newsletters</h5>
+          </div>
+          <div class="col-12 col-md-4">
+            <form action="" class="d-flex justify-content-center">
+              <div class="input-group">
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  class="form-control form-control-sm"
+                  placeholder="Your email"
+                />
+                <button type="submit" class="btn btn-success d-inline-flex align-items-center rounded-end">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    fill="#fff"
+                    class="d-inline-block align-text-bottom me-1"
+                    viewBox="0 0 640 640"
+                  >
+                    <path
+                      d="M112 128C85.5 128 64 149.5 64 176C64 191.1 71.1 205.3 83.2 214.4L291.2 370.4C308.3 383.2 331.7 383.2 348.8 370.4L556.8 214.4C568.9 205.3 576 191.1 576 176C576 149.5 554.5 128 528 128L112 128zM64 260L64 448C64 483.3 92.7 512 128 512L512 512C547.3 512 576 483.3 576 448L576 260L377.6 408.8C343.5 434.4 296.5 434.4 262.4 408.8L64 260z"
+                    />
+                  </svg>
+                  Subscribe
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       </div>
