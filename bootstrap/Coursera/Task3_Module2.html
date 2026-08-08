@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Task 3 - Module 2</title>
     <link rel="stylesheet" href="./assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -12,18 +13,24 @@
       <h1 class="text-center fw-light">Bootstrap Alert Buttons</h1>
 
       <div class="btn-group d-flex justify-content-between align-items-center">
-        <button type="button" class="btn btn-success rounded-0 mx-2">
+        <button type="button" onclick="sendMessage('Yay - Success', 'success')" class="btn btn-success rounded mx-2">
           Success
         </button>
-        <button type="button" class="btn btn-warning rounded-0 mx-2">
+        <button type="button" onclick="sendMessage('Warning - Becareful!', 'warning')" class="btn btn-warning rounded mx-2">
           Warning
         </button>
-        <button type="button" class="btn btn-danger rounded-0 mx-2">
+        <button type="button" onclick="sendMessage('Danger - Something went wrong!', 'danger')" class="btn btn-danger rounded mx-2">
           Danger
         </button>
       </div>
     </div>
 
+    <div class="container mt-4" id="messageContainer">
+        
+    </div>
+
+    <script
+    src="./assets/main.js"></script>
     <script src="./assets/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>
