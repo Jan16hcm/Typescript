@@ -10,7 +10,7 @@ const message = new Map<boolean, string>([
 ]);
 
 function App() {
-  const [year, setYear] = useState<string>("2000");
+  const [year, setYear] = useState<string>("");
   const [isValid, setValid] = useState<boolean>(false);
   const [isChange, setChange] = useState<boolean>(true);
 
@@ -22,12 +22,21 @@ function App() {
   function handleValidation(e: React.FormEvent): void {
     e.preventDefault();
     setChange(false);
-    if(isNaN(Number(year)) || year.trim() === "" || Number(year) < 2000 || Number(year) > 2026) {
+    const currentYear: string = year.trim() === "" ? "2000" : year; 
+    if(year.trim() === "") {
+      setYear("2000");
+    }
+    const numYear: string = currentYear;
+    if (
+      isNaN(Number(numYear)) ||
+      numYear.trim() === "" ||
+      Number(numYear) < 2000 ||
+      Number(numYear) > 2026
+    ) {
       setValid(false);
     } else {
-      setValid(true)
+      setValid(true);
     }
-    
   }
 
   return (
@@ -41,16 +50,21 @@ function App() {
         </div>
 
         <form action="" onSubmit={handleValidation}>
-          <div className="d-flex-column justify-content-center">
-            <input
-              type="number"
-              name="numberForm"
-              id="numberForm"
-              className="form-control"
-              placeholder="Enter year"
-              value={year}
-              onChange={handleYearChange}
-            />
+          <div className="d-flex flex-column justify-content-center">
+            <div className="input-group align-items-center">
+              <span className="input-group-text">
+                <i className="bi bi-heart d-inline-block align-text-bottom"></i>
+              </span>
+              <input
+                type="number"
+                name="numberForm"
+                id="numberForm"
+                className="form-control"
+                placeholder="Enter year"
+                value={year}
+                onChange={handleYearChange}
+              />
+            </div>
 
             <input
               type="range"
@@ -58,7 +72,7 @@ function App() {
               id="rangeForm"
               min="1900"
               max="2100"
-              value={year}
+              value={year || "2000"}
               onChange={handleYearChange}
               className="form-range d-block mx-auto mt-4"
               style={{ height: "5px", width: "80%" }}
@@ -73,7 +87,11 @@ function App() {
           </div>
         </form>
 
-        <div className={`alert ${isValid ? "alert-success" : "alert-danger"} mt-3 ${isChange ? "d-none" : "d-block"}`}>{message.get(isValid)}</div>
+        <div
+          className={`alert ${isValid ? "alert-success" : "alert-danger"} mt-3 ${isChange ? "d-none" : "d-block"}`}
+        >
+          {message.get(isValid)}
+        </div>
       </div>
     </>
   );
