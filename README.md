@@ -10,7 +10,4 @@ Drag-and-Drop List – Reorder list items with HTML5 drag-and-drop APIs and stri
 
 Calculator App – Perform arithmetic operations with type-checked inputs.
 
-Random Password Generator – Generate secure passwords with configurable parameters.
-
-Tic-Tac-Toe
-Final is ToDo App
+Focus on reading a textbook
